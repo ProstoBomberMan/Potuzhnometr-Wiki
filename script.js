@@ -51,7 +51,7 @@ return '<a class="tile glass" href="#/s/'+n.id+'"><span class="ic">'+n.i+'</span
 }).join("");
 return head("Потужнометр","Вікі гри")+
 '<section class="hero glass"><img src="logo.png" alt=""><div><h2>Ласкаво просимо</h2><p>'+soon+'</p><div class="scale">'+scale+'</div></div></section>'+
-'<p class="label">Розділи</p><div class="grid">'+tiles+'</div>';
+'<p class="label">Розділи</p><div class="grid">'+tiles+'</div><button class="egg" id="egg" aria-label="Пасхалка">🥚</button>';
 }
 
 function sectionsPage(){
@@ -94,6 +94,17 @@ run();
 q.focus();
 }
 
+function openEgg(){
+var m=document.createElement("div");
+m.className="modal";
+m.innerHTML='<div class="box glass"><img src="cat-egg.webp" alt="Кіт у яйці"><b>Пасхалку знайдено!</b><span>Торкніться, щоб закрити</span></div>';
+function close(){m.remove();document.removeEventListener("keydown",key)}
+function key(e){if(e.key==="Escape")close()}
+m.addEventListener("click",close);
+document.addEventListener("keydown",key);
+document.body.appendChild(m);
+}
+
 function route(){
 var h=location.hash.replace(/^#\/?/,"");
 var parts=h.split("/").filter(Boolean);
@@ -106,6 +117,8 @@ tab="sections";
 view.innerHTML=trail?page(trail):home();
 }
 else{view.innerHTML=home()}
+var egg=document.getElementById("egg");
+if(egg)egg.addEventListener("click",openEgg);
 document.querySelectorAll(".dock a").forEach(function(a){a.classList.toggle("on",a.dataset.tab===tab)});
 window.scrollTo(0,0);
 }
