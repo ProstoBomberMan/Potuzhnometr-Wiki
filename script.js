@@ -11,7 +11,7 @@ var sections=[
 ]},
 {id:"factories",t:"Фабрики Потужності",i:"🏭",doc:{
 intro:"Фабрика потужності — один із режимів Потужнометра, розташований у вкладці «Інше». Це один із найпопулярніших режимів гри.",
-facts:[["1000","стартових ПТЖ"],["8","стартових слотів"],["16","слотів максимум"],["40%","ціни при продажу"]],
+image:"factory.webp",caption:"Як виглядає Фабрика потужності на даний момент у грі",author:"Qwerty",
 blocks:[
 {h:"Геймплей",p:["Під час створення акаунту гравець отримує 1000 ПТЖ. За цю валюту потрібно купувати артефакти, які, своєю чергою, приносять ще більше ПТЖ.","Усі предмети рухаються конвеєром, тому рідкісніші артефакти з’являються рідше. Щоб отримати артефакт, потрібно натиснути на нього та заповнити шкалу захоплення, інакше він не потрапить на склад. Чим дорожчий предмет, тим складніше заповнити шкалу."]},
 {h:"Артефакти та рівні потужності",p:["Тут буде інформація пізніше…"]},
@@ -69,7 +69,8 @@ return head("Розділи")+'<div class="list glass">'+sections.map(function(n
 }
 
 function docHtml(d){
-var out='<section class="card glass"><p class="lead">'+esc(d.intro)+'</p><div class="facts">'+d.facts.map(function(f){return '<div><b>'+esc(f[0])+'</b><span>'+esc(f[1])+'</span></div>'}).join("")+'</div></section>';
+var out='<section class="card glass"><p class="lead">'+esc(d.intro)+'</p></section>';
+if(d.image)out+='<figure class="shot glass"><img src="'+d.image+'" alt="'+esc(d.caption||"")+'" loading="lazy"><figcaption>'+esc(d.caption||"")+'</figcaption></figure>';
 d.blocks.forEach(function(b){
 out+='<section class="card glass doc"><h2>'+esc(b.h)+'</h2>';
 (b.p||[]).forEach(function(t){out+='<p>'+esc(t)+'</p>'});
@@ -77,6 +78,7 @@ if(b.ul)out+='<ul>'+b.ul.map(function(t){return '<li>'+esc(t)+'</li>'}).join("")
 (b.after||[]).forEach(function(t){out+='<p>'+esc(t)+'</p>'});
 out+='</section>';
 });
+if(d.author)out+='<p class="author">Автор статті: <b>'+esc(d.author)+'</b></p>';
 return out;
 }
 
