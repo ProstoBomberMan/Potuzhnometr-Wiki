@@ -61,3 +61,16 @@ a:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offs
 .modal img{display:block;width:210px;max-width:100%;height:auto;margin:0 auto 10px}
 .modal b{display:block;font-size:20px}
 .modal span{display:block;margin-top:4px;color:var(--sub);font-size:14px}
+
+.card .lead{color:var(--text);font-size:17px;margin:0 0 18px}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.facts div{background:var(--glass-strong);border:1px solid var(--edge);border-radius:20px;padding:12px 14px}
+.facts b{display:block;font-size:24px;letter-spacing:-.02em;color:var(--accent)}
+.facts span{font-size:13px;color:var(--sub)}
+.doc h2{margin:0 0 12px;font-size:21px;letter-spacing:-.01em}
+.doc p{color:var(--text);opacity:.9}
+.doc ul{margin:0 0 14px;padding:0;list-style:none}
+.doc li{position:relative;padding:0 0 10px 22px;opacity:.9}
+.doc li::before{content:"";position:absolute;left:4px;top:.55em;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.doc li:last-child{padding-bottom:0}
+.doc>*:last-child{margin-bottom:0}
